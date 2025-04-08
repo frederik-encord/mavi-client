@@ -1,5 +1,6 @@
 from mavi_client import MaviClient, TranscriptionType
 import time
+import typer
 
 
 def main():
@@ -31,4 +32,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    typer.run(main)

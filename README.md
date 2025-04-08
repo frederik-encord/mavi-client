@@ -19,11 +19,42 @@ cd mavi
 ```
 
 2. Set up a virtual environment and install dependencies:
+
 ```
-python -m venv .venv
-source .venv/bin/activate  # On Windows, use: .venv\Scripts\activate
-pip install -e .
+uv sync
 ```
+
+
+## Code
+
+To run all the scripts listed below that doest things like upload data, search data, transcribe data, etc. run 
+
+```shell
+uv run [script_name.py] --help
+```
+
+for more details.
+
+### Main file
+
+Main functionality is in `mavi_client.py`. Using the client expects the `MAVI_API_KEY` environment variable to be set.
+See, e.g., [configuration](#configuration) below for one option for managing the key.
+
+Functionality of the client is described in more detail in the [Usage section](#usage).
+
+
+### Files that can be run:
+
+* `delete_duplicates.py`: Find duplicate file names and select which of the duplicates to delete
+* `delete_videos.py`: Delete videos based on metadata query
+* `list_videos.py`: List videos based on metadata query
+* `nlp_search.py`: Search for full videos based on natural language
+* `nlp_video_clips.py`: Find clips within videos based on natural language
+* `upload_videos.py`: Upload videos from a local directory
+* `upload_with_callback.py`: Example of uploading with callback [🔴 currently doesn't work] (Depends on running `modal serve modal_callback_endpoint.py` separately and copying the endpoint url over)
+* `video_chat.py`: Select some of your videos and chat with them in the terminal
+* `video_transcript.py`: Transcribe video
+
 
 ## Configuration
 
@@ -209,17 +240,13 @@ These models provide:
 - IDE autocompletion support
 - Clear documentation of expected data structures
 
-## Examples
-
-Check the `main.py` file for more comprehensive examples of how to use the client.
-
 ## API Status Codes
 
 - `PARSE`: Video processing successful/in progress
 - `UNPARSE`: Video processing pending
 - `PARSE_ERROR` or `FAIL`: Video processing failed
 
-## Feedback (prioritized)
+# Feedback for Mavi Team (prioritized)
 
 ### High
 - [ ] No org features. I cannot have separate datasets for separate customers/projects. 

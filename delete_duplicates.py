@@ -1,5 +1,6 @@
 from mavi_client import MaviClient, MetadataVideoInfo
 import typer
+from click import confirm
 
 from utils import select_videos
 
@@ -29,6 +30,9 @@ def main():
         return
 
     selected_videos = select_videos(client, videos=to_select_from, return_all=True)
+    if not confirm(f"Are you sure you want to delete {len(selected_videos)} videos?"):
+        raise typer.Abort()
+
     print("Deleting videos...")
     print("")
     for video in selected_videos:
