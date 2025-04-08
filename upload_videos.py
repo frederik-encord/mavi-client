@@ -57,7 +57,7 @@ def main(
     total_pages = (total_videos + page_size - 1) // page_size
 
     # Collect all video names across pages
-    latest_upload = datetime.now() - timedelta(seconds=60)
+    latest_upload = datetime.now(tz=timezone.utc) - timedelta(seconds=60)
     existing_video_names: set[str] = set()
     for page in range(1, total_pages + 1):
         videos = client.search_metadata(page=page, page_size=page_size).data.videoData
@@ -74,13 +74,13 @@ def main(
         if Path(video.name).stem in existing_video_names:
             print(f"Skipping {video.name} because it already exists")
             continue
-        time_since_limit = datetime.now() - latest_upload
+        time_since_limit = datetime.now(tz=timezone.utc) - latest_upload
 
         if limit_count >= limit_per_minute:
             print(f"Sleeping for {60 - time_since_limit.seconds} seconds")
             time.sleep(60 - time_since_limit.seconds)
             limit_count = 0
-            latest_upload = datetime.now()
+            latest_upload = datetime.now(tz=timezone.utc)
 
         try:
             new_videos.append(upload_example(client, video, video.name))

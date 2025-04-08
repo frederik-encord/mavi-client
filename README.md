@@ -2,6 +2,9 @@
 
 A Python client for interacting with the MAVI API, which provides video processing, transcription, and search capabilities.
 
+https://github.com/user-attachments/assets/df67627e-58fd-43b3-a5b2-f4a4cd3fef04
+
+
 ## Features
 
 - Complete API client for the MAVI platform
