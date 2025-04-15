@@ -264,6 +264,7 @@ These models provide:
 
 ### Low
 - [ ] `VIDEO/AUDIO` transcription type doesn't seem to work for transcription. Only the uni-modal `AUDIO` and `VIDEO`. `VIDEO/AUDIO` is listed in the [docs](https://docs.openinterx.com/MAVI-API/Transcription-video#request-example) as an option.
+- [ ] `PARSE_ERROR` mentioned [here](https://docs.openinterx.com/MAVI-API/Code#videostatus-enum) seems to be wrong. Probably should be `FAIL` instead.
 - [ ] [Documentation](https://docs.openinterx.com/MAVI-API/Transcription-video#response-example-1) says that there's an `id` property on transcriptions wich is not correct.
 - [ ] It's generally very hard to figure out what I am allowed to do and what I'm not allowed to do. A more structured API documentation would be nice. Like building it with swagger or whatever.
 - [ ] There are many typos in the documentation.
